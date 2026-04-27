@@ -1,0 +1,14 @@
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+build/
+out/
+bin/
+.vscode/
+*.swp
+*.swo
+Thumbs.db
+.DS_Store
