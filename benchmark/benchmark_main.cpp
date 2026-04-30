@@ -1,27 +1,54 @@
 #include <iostream>
 #include <chrono>
 #include <string>
+#include <vector>
 #include "Solution.h"
+
+void measurePerformance(Solution& sol, const std::string& formula, const std::string& description) {
+    std::cout << "Prueba: " << description << "\n";
+    std::cout << "Longitud: " << formula.length() << " caracteres\n";
+
+    // Tomar el tiempo justo antes de ejecutar
+    auto start = std::chrono::high_resolution_clock::now();
+    
+    // Ejecutamos la funcion
+    std::string result = sol.countOfAtoms(formula);
+    
+    // Tomar el tiempo justo despues
+    auto end = std::chrono::high_resolution_clock::now();
+    
+    // Calcular duracion en milisegundos con precision de decimales
+    std::chrono::duration<double, std::milli> duration = end - start;
+
+    std::cout << "Tiempo: " << duration.count() << " ms\n";
+    std::cout << "----------------------------------------\n";
+}
 
 int main() {
     Solution sol;
-    // Generamos una fórmula larga para que el tiempo sea medible
-    std::string complex_formula = "";
-    for(int i = 0; i < 100; ++i) {
-        complex_formula += "K4(ON(SO3)2)2";
+    
+    std::cout << "--- BENCHMARK ---\n\n";
+
+    // Formula Corta (Comportamiento Base)
+    std::string formula_corta = "K4(ON(SO3)2)2";
+    measurePerformance(sol, formula_corta, "Formula estandar anidada");
+
+    // Formula Larga (O(N) sobre el tamaño del string
+    std::string formula_larga = "";
+    for(int i = 0; i < 500; i++) {
+        formula_larga += "K4(ON(SO3)2)2"; 
     }
+    measurePerformance(sol, formula_larga, "Formula de estres (x500 veces)");
 
-    std::cout << "Iniciando Benchmark para una formula de " << complex_formula.length() << " caracteres...\n";
+    // Anidamiento Profundo (El peor caso para O(N^2))
+    std::string formula_profunda = "H";
+    for(int i = 0; i < 500; i++) {
+        formula_profunda = "(" + formula_profunda + ")2";
+    }
+    measurePerformance(sol, formula_profunda, "Anidamiento extremo recursivo");
 
-    auto start = std::chrono::high_resolution_clock::now();
+    std::cout << "Analisis: Observar como el Caso 3 escala peor que el Caso 2 \n";
+    std::cout << "debido a las multiplicaciones repetidas del mapa en cada pop().\n";
     
-    std::string result = sol.countOfAtoms(complex_formula);
-    
-    auto end = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double, std::milli> elapsed = end - start;
-
-    std::cout << "Benchmark completado.\n";
-    std::cout << "Tiempo de ejecucion: " << elapsed.count() << " ms\n";
-
     return 0;
 }
