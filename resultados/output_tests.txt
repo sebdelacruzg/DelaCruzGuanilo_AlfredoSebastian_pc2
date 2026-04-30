@@ -1,0 +1,7 @@
+Ejecutando pruebas de unidad (Unit Tests)...
+[PASS] Caso H2O
+[PASS] Caso Mg(OH)2
+[PASS] Caso K4(ON(SO3)2)2
+[PASS] Caso Be32(H2O)2
+
+Todas las pruebas pasaron exitosamente.

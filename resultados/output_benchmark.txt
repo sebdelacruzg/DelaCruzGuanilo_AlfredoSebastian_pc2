@@ -1,0 +1,16 @@
+--- BENCHMARK ---
+
+Prueba: Formula estandar anidada
+Longitud: 13 caracteres
+Tiempo: 0.1778 ms
+----------------------------------------
+Prueba: Formula de estres (x500 veces)
+Longitud: 6500 caracteres
+Tiempo: 6.481 ms
+----------------------------------------
+Prueba: Anidamiento extremo recursivo
+Longitud: 1501 caracteres
+Tiempo: 1.113 ms
+----------------------------------------
+Analisis: Observar como el Caso 3 escala peor que el Caso 2 
+debido a las multiplicaciones repetidas del mapa en cada pop().
