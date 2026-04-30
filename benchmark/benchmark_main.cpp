@@ -47,8 +47,8 @@ int main() {
     }
     measurePerformance(sol, formula_profunda, "Anidamiento extremo recursivo");
 
-    std::cout << "Analisis: Observar como el Caso 3 escala peor que el Caso 2 \n";
-    std::cout << "debido a las multiplicaciones repetidas del mapa en cada pop().\n";
+    std::cout << "Analisis: El Caso 2 es mas lento por la longitud del string.\n";
+    std::cout << "El Caso 3 es eficiente porque solo procesa un atomo unico (H) por nivel.\n";
     
     return 0;
 }
