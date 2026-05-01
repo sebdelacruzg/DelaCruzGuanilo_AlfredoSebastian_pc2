@@ -23,12 +23,11 @@ La solución analiza la fórmula química secuencialmente. Utiliza una pila de d
 ### Invariante o idea clave
 Durante toda la ejecución, el mapa situado en el tope de la pila (`st.top()`) contiene las frecuencias consolidadas de los átomos que pertenecen estricta y únicamente al nivel de anidamiento de paréntesis que se está procesando en ese momento.
 
-### Archivos relevantes
-- `include/Solution.h`
-- `src/Solution.cpp`
-- `tests/test_main.cpp`
-- `demos/demo_main.cpp`
-- `benchmark/benchmark_main.cpp`
+### Archivos Relevantes
+- **Solución:** [`include/Solution.h`](./include/Solution.h) y [`src/Solution.cpp`](./src/Solution.cpp)
+- **Tests:** [`tests/test_main.cpp`](./tests/test_main.cpp)
+- **Benchmark:** [`benchmark/benchmark_main.cpp`](./benchmark/benchmark_main.cpp)
+- **Demo:** [`demos/demo_main.cpp`](./demos/demo_main.cpp)
 
 ### Compilación
 ```bash
@@ -37,8 +36,13 @@ cmake --build build
 ```
 ### Ejecución
 ```bash
+# 1. Pruebas Unitarias
 ./build/run_tests.exe
+
+# 2. Análisis de Rendimiento
 ./build/run_benchmark.exe
+
+# 3. Aplicación Interactiva
 ./build/run_demo.exe
 ```
 ### Casos de prueba
